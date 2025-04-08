@@ -1,103 +1,220 @@
-import Image from "next/image";
+"use client";
+
+import { type ImageProps, default as Image } from 'next/image'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { MoveRight, Calendar, MapPin, Medal, Star, Clock, Users, Shield } from 'lucide-react'
+import { HeroButtons } from './components/HeroButtons'
+import MasterFundamentals from './components/MasterFundamentals'
+import ProgramDetailsSection from './components/ProgramDetails'
+import { ScrollButton } from './components/ScrollButton'
+import { BackgroundPaths } from '@/components/ui/background-paths'
+import type { StaticImageData } from 'next/image'
+import { cn } from "@/lib/utils"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] lg:min-h-[800px] bg-gradient-to-b from-pakistan_green-900 to-pakistan_green-800">
+        {/* Logo */}
+        <div className="absolute top-6 md:top-8 lg:top-10 left-1/2 -translate-x-1/2 z-20 w-[150px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-auto px-4">
+          <img
+            src="/images/logos.png"
+            alt="OTG Football Academy and Mono Liza Sports Centre Logos"
+            className="w-full h-auto object-contain"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        {/* Background Image Container */}
+        <div className="absolute inset-0 z-0">
+          <div className="relative w-full h-full">
+            {/* Desktop Image */}
+            <div className="relative w-full h-full hidden md:block">
+              <img
+                src="/hero-bg.jpg"
+                alt="OTG Football Academy coach with young players"
+                className="w-full h-full object-cover opacity-70"
+                style={{
+                  objectPosition: 'center center'
+                }}
+              />
+            </div>
+            {/* Mobile Image */}
+            <div className="relative w-full h-full block md:hidden">
+              <img
+                src="/hero-bg.jpg"
+                alt="OTG Football Academy training session"
+                className="w-full h-full object-cover opacity-70"
+                style={{
+                  objectPosition: 'center center'
+                }}
+              />
+            </div>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-pakistan_green-900/60 to-pakistan_green-800/60" />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 container mx-auto h-full flex items-center justify-center pt-32 pb-20 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32">
+          <div className="flex flex-col items-center text-center">
+            <div className="flex gap-6 flex-col text-nyanza-50 max-w-3xl">
+              <div>
+                <Badge variant="outline" className="bg-light_green-500 text-pakistan_green-900 border-0">
+                  Easter Camp 2025 • Ages 6-18
+                </Badge>
+              </div>
+              <div className="flex gap-6 flex-col">
+                <h1 className="text-5xl md:text-7xl tracking-tight font-bold">
+                  Transform Your Game This Easter
+                </h1>
+                <p className="text-xl leading-relaxed tracking-tight text-nyanza-200">
+                  Experience our intensive two-week training program featuring professional coaching, circuit training, swimming sessions, and strength conditioning. Limited spots available to ensure personalized attention.
+                </p>
+              </div>
+              <HeroButtons />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Master the Fundamentals Section */}
+      <MasterFundamentals />
+
+      {/* Program Details Section */}
+      <ProgramDetailsSection />
+
+      {/* Facilities & Activities Section */}
+      <section className="relative w-full py-20 bg-gradient-to-br from-pakistan_green-800 to-india_green-800">
+        <BackgroundPaths title="World-Class Facilities" />
+        <div className="container relative z-20 mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-nyanza-50 mb-4">World-Class Facilities</h2>
+            <p className="text-xl text-nyanza-200 max-w-2xl mx-auto">
+              Train in our state-of-the-art facilities at Mono Liza Sports Centre
+            </p>
+          </div>
+          
+          {/* Scrollable Image Gallery */}
+          <div className="relative mb-12 overflow-hidden">
+            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+              {[
+                {
+                  src: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800&auto=format&fit=crop",
+                  alt: "Football training pitch",
+                  title: "Main Training Ground"
+                },
+                {
+                  src: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=800&auto=format&fit=crop",
+                  alt: "Indoor football facility",
+                  title: "Indoor Training Center"
+                },
+                {
+                  src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+                  alt: "Gym equipment",
+                  title: "Modern Gym Facility"
+                },
+                {
+                  src: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800&auto=format&fit=crop",
+                  alt: "Swimming pool",
+                  title: "Swimming Pool"
+                },
+                {
+                  src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop",
+                  alt: "Medical facility",
+                  title: "Medical Center"
+                },
+                {
+                  src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop",
+                  alt: "Recovery area",
+                  title: "Recovery Zone"
+                }
+              ].map((image, index) => (
+                <div key={index} className="relative flex-none w-[300px] md:w-[400px] snap-start">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      quality={85}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4dHRsdHR4dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDAR4SEhsdHR4dHR4dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                      className="object-cover"
+                      sizes="(max-width: 768px) 300px, 400px"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl" />
+                  <h3 className="absolute bottom-4 left-4 text-xl font-semibold text-white">
+                    {image.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Football Pitches",
+                description: "Three 5-aside and one 8-aside pitch for various drills and games"
+              },
+              {
+                title: "Swimming Pool",
+                description: "5m x 10m pool for swimming instruction and water safety"
+              },
+              {
+                title: "Gym Facilities",
+                description: "Modern gym equipment for strength and conditioning"
+              },
+              {
+                title: "Training Areas",
+                description: "Dedicated spaces for specific skill development"
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-nyanza-50 mb-2">{item.title}</h3>
+                <p className="text-nyanza-200">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <ScrollButton />
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section id="cta" className="w-full py-20 bg-nyanza-50">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge variant="outline" className="bg-light_green-500 text-pakistan_green-900 border-0 mb-6">
+              Limited Spots Available
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold text-pakistan_green-900 mb-6">
+              Ready to Transform Your Football Journey?
+            </h2>
+            <p className="text-xl text-pakistan_green-700 mb-8 max-w-2xl mx-auto">
+              Join us this Easter for an unforgettable football experience. Secure your spot today and take the first step towards becoming a better player.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="gap-2 bg-pakistan_green-800 text-nyanza-50 hover:bg-pakistan_green-700"
+                onClick={() => window.location.href = '/register'}
+              >
+                Register Now <MoveRight className="w-5 h-5" />
+              </Button>
+              <Button size="lg" variant="outline" className="gap-2 border-pakistan_green-800 text-pakistan_green-800 hover:bg-pakistan_green-50">
+                Download Brochure
+              </Button>
+            </div>
+            <p className="mt-6 text-sm text-pakistan_green-600">
+              Have questions? Contact us at <span className="font-semibold">info@offthegame.com</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
 }
