@@ -84,7 +84,7 @@ export async function POST(req: Request) {
         };
 
         const welcomeEmailResult = await resend.emails.send(emailData);
-        console.log('Welcome email sent successfully:', welcomeEmailResult.id);
+        console.log('Welcome email sent successfully:', welcomeEmailResult);
       } catch (emailError) {
         console.error('Failed to send welcome email:', emailError);
         // Continue with registration even if email fails
@@ -101,11 +101,12 @@ ${formData.firstName} ${formData.lastName},${formData.email || 'N/A'},${formData
 `;
 
     try {
-      const adminEmailData = {
-        from: `OTG Football Academy <noreply@camp.offthegame.com>`,
-        to: SMTP_TO,
-        subject: 'New Registration - OTG Football Academy',
-        text: `New registration received for ${formData.firstName} ${formData.lastName}.
+      if (SMTP_TO) {
+        const adminEmailData = {
+          from: `OTG Football Academy <noreply@${DOMAIN}>`,
+          to: [SMTP_TO],
+          subject: 'New Registration - OTG Football Academy',
+          text: `New registration received for ${formData.firstName} ${formData.lastName}.
 
 Registration Details:
 - Name: ${formData.firstName} ${formData.lastName}
@@ -115,17 +116,18 @@ Registration Details:
 - Amount Paid: ${formData.amountPaid}
 
 Please find the complete details in the attached CSV file.`,
-        attachments: [
-          {
-            filename: 'registration.csv',
-            content: Buffer.from(csvData).toString('base64'),
-            type: 'text/csv'
-          }
-        ]
-      };
+          attachments: [
+            {
+              filename: 'registration.csv',
+              content: Buffer.from(csvData).toString('base64'),
+              type: 'text/csv'
+            }
+          ]
+        };
 
-      const adminEmailResult = await resend.emails.send(adminEmailData);
-      console.log('Admin notification sent successfully:', adminEmailResult.id);
+        const adminEmailResult = await resend.emails.send(adminEmailData);
+        console.log('Admin notification sent successfully:', adminEmailResult);
+      }
     } catch (adminEmailError) {
       console.error('Failed to send admin notification:', adminEmailError);
       return NextResponse.json(
