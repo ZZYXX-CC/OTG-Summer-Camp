@@ -4,13 +4,13 @@ const Facilities = () => {
   const facilities = [
     {
       title: 'Main Training Ground',
-      description: 'Three 5-aside and one 8-aside pitch for various drills and games',
-      image: '/images/main-ground.jpg',
+      description: 'football training ground',
+      image: '/images/facilities/IMG_7011.jpg',
     },
     {
       title: 'Indoor Training Center',
       description: 'State-of-the-art indoor facility for year-round training',
-      image: '/images/indoor-center.jpg',
+      image: '/images/football.jpg',
     },
     {
       title: 'Modern Gym Facility',
@@ -20,7 +20,7 @@ const Facilities = () => {
     {
       title: 'Swimming Pool',
       description: '5m x 10m pool for swimming instruction and water safety',
-      image: '/images/pool.jpg',
+      image: '/images/swimming.jpg',
     },
   ];
 
@@ -48,11 +48,10 @@ const Facilities = () => {
               className="relative group overflow-hidden rounded-xl bg-green-700 shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="aspect-w-16 aspect-h-9 relative">
-                <Image
+                <img
                   src={facility.image}
                   alt={facility.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300" />
               </div>
@@ -90,4 +89,4 @@ const Facilities = () => {
   );
 };
 
-export default Facilities; 
+export default Facilities;

@@ -1,4 +1,4 @@
-import { TiltCard } from "@/components/ui/tilt-card";
+import { TiltCard } from "@/app/components/ui/tilt-card";
 
 function DefaultDemo() {
   return (
@@ -17,4 +17,4 @@ function DefaultDemo() {
   );
 }
 
-export { DefaultDemo }; 
+export { DefaultDemo };

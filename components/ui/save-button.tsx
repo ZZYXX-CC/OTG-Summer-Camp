@@ -18,6 +18,7 @@ interface SaveButtonProps {
   onSave?: () => Promise<void> | void
   showLoadingState?: boolean
   showConfetti?: boolean
+  onSuccess?: () => void
 }
 
 export function SaveButton({ 
@@ -29,7 +30,8 @@ export function SaveButton({
   className,
   onSave,
   showLoadingState = true,
-  showConfetti = true
+  showConfetti = true,
+  onSuccess
 }: SaveButtonProps) {
   const [status, setStatus] = useState<"idle" | "saving" | "saved">("idle")
   const [bounce, setBounce] = useState(false)
@@ -64,6 +66,12 @@ export function SaveButton({
             shapes: ["star", "circle"],
           })
         }
+        
+        // Call onSuccess callback if provided
+        if (onSuccess) {
+          onSuccess()
+        }
+
         setTimeout(() => {
           setStatus("idle")
           setBounce(false)
@@ -110,76 +118,50 @@ export function SaveButton({
         animate={showLoadingState ? status : undefined}
         variants={buttonVariants}
         className={cn(
-          "group relative grid overflow-hidden rounded-full px-6 py-2 transition-all duration-200",
-          status === "idle"
-            ? "hover:bg-pakistan_green-700 hover:text-nyanza-50"
-            : "",
-          "hover:shadow-lg",
+          "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:text-accent-foreground h-11 rounded-md px-8 gap-2 border-pakistan_green-800 text-pakistan_green-800 hover:bg-pakistan_green-50",
           className
         )}
         style={{ minWidth: "150px" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {status === "idle" && (
-          <span>
-            <span
-              className={cn(
-                "shadow-[0_1000px_0_0_rgb(132,204,22,0.9)_inset] dark:shadow-[0_1000px_0_0_rgb(20,83,45,0.9)_inset] spark mask-gradient absolute inset-0 h-[100%] w-[100%] animate-flip overflow-hidden rounded-full",
-                "[mask:linear-gradient(black,_transparent_50%)] before:absolute before:aspect-square before:w-[200%] before:bg-[conic-gradient(from_0deg,transparent_0_340deg,black_360deg)]",
-                "before:rotate-[-90deg] before:animate-rotate dark:before:bg-[conic-gradient(from_0deg,transparent_0_340deg,white_360deg)]",
-                "before:content-[''] before:[inset:0_auto_auto_50%] before:[translate:-50%_-15%] dark:[mask:linear-gradient(white,_transparent_50%)]",
-              )}
-            />
-          </span>
+        {showLoadingState && (
+          <AnimatePresence mode="wait">
+            {status === "saving" && (
+              <motion.span
+                key="saving"
+                initial={{ opacity: 0, rotate: 0 }}
+                animate={{ opacity: 1, rotate: 360 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  duration: 0.3,
+                  rotate: { repeat: Number.POSITIVE_INFINITY, duration: 1, ease: "linear" },
+                }}
+              >
+                <Loader2 className="w-4 h-4" />
+              </motion.span>
+            )}
+            {status === "saved" && (
+              <motion.span
+                key="saved"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <Check className="w-4 h-4" />
+              </motion.span>
+            )}
+          </AnimatePresence>
         )}
-        <span
-          className={cn(
-            "backdrop absolute inset-px rounded-[22px] transition-colors duration-200",
-            status === "idle"
-              ? "bg-light_green-500/90 group-hover:bg-light_green-500 dark:bg-pakistan_green-800/90 dark:group-hover:bg-pakistan_green-800"
-              : "",
-          )}
-        />
-        <span className="z-10 flex items-center justify-center gap-2 text-sm font-medium">
-          {showLoadingState && (
-            <AnimatePresence mode="wait">
-              {status === "saving" && (
-                <motion.span
-                  key="saving"
-                  initial={{ opacity: 0, rotate: 0 }}
-                  animate={{ opacity: 1, rotate: 360 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    duration: 0.3,
-                    rotate: { repeat: Number.POSITIVE_INFINITY, duration: 1, ease: "linear" },
-                  }}
-                >
-                  <Loader2 className="w-4 h-4" />
-                </motion.span>
-              )}
-              {status === "saved" && (
-                <motion.span
-                  key="saved"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Check className="w-4 h-4" />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          )}
-          <motion.span
-            key={status}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            {status === "idle" ? text.idle : status === "saving" ? text.saving : text.saved}
-          </motion.span>
-        </span>
+        <motion.span
+          key={status}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {status === "idle" ? text.idle : status === "saving" ? text.saving : text.saved}
+        </motion.span>
       </motion.button>
       <AnimatePresence>
         {bounce && showConfetti && (
