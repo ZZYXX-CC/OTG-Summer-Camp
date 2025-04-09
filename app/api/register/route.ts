@@ -28,10 +28,29 @@ let resend: Resend;
 
 export async function POST(req: Request) {
   try {
+    console.log('Starting registration process...');
+    
     resend = checkEnvVariables();
+    console.log('Environment variables checked and Resend client initialized');
+
+    // After checkEnvVariables, we know these are defined
+    const fromEmail = SMTP_FROM!;
+    const toEmail = SMTP_TO!;
+    
+    console.log('Email configuration:', { 
+      fromEmail: fromEmail.replace(/@.*$/, '@...'), // Log partial email for security
+      toEmailCount: toEmail.split(',').length
+    });
 
     const formData = await req.json();
-    console.log('Received form data:', formData);
+    console.log('Received form data:', {
+      ...formData,
+      // Mask sensitive information in logs
+      email: formData.email ? '***@***' : undefined,
+      phone: formData.phone ? '***' : undefined,
+      parentEmail: formData.parentEmail ? '***@***' : undefined,
+      parentPhone: formData.parentPhone ? '***' : undefined,
+    });
 
     // Validate required fields
     let requiredFields = [
@@ -73,12 +92,12 @@ export async function POST(req: Request) {
     const paymentStatus = hasPaid ? 'Completed' : 'Pending';
 
     // Send welcome email to registrant (only if they provided an email)
-    if (formData.email && SMTP_FROM) {
+    if (formData.email) {
       try {
         console.log('Attempting to send welcome email to:', formData.email);
         
         const emailData = {
-          from: `OTG Football Academy <noreply@camp.offthegame.com>`,
+          from: fromEmail,
           to: formData.email,
           subject: 'Welcome to OTG Football Academy Camp!',
           react: WelcomeEmail({
@@ -97,45 +116,48 @@ export async function POST(req: Request) {
         console.log('Continuing with registration despite email failure');
       }
     } else {
-      console.log('Skipping welcome email - no email provided or SMTP_FROM not configured');
+      console.log('Skipping welcome email - no email provided');
     }
 
     // Send CSV data to admin email
     const csvData = `
 Participant Name,Email,Phone,Date of Birth,Age,Has Paid,Payment Status,Payment Method,Amount Paid
-${formData.firstName} ${formData.lastName},${formData.email || 'N/A'},${formData.phone || 'N/A'},${formData.dateOfBirth},${formData.age},${hasPaid},${paymentStatus},${formData.paymentMethod},${formData.amountPaid}
+${formData.firstName} ${formData.lastName},${formData.email || 'N/A'},${formData.phone || 'N/A'},${formData.dateOfBirth},${formData.age},${hasPaid},${paymentStatus},${formData.paymentMethod || 'N/A'},${formData.amountPaid || '0'}
 `;
 
     try {
-      if (SMTP_TO) {
-        const adminEmailData = {
-          from: `OTG Football Academy <noreply@${DOMAIN}>`,
-          to: [SMTP_TO],
-          subject: 'New Registration - OTG Football Academy',
-          text: `New registration received for ${formData.firstName} ${formData.lastName}.
+      // Split SMTP_TO into an array if it contains multiple emails
+      const toEmails = toEmail.split(',').map(email => email.trim());
+      
+      const adminEmailData = {
+        from: fromEmail,
+        to: toEmails,
+        subject: 'New Registration - OTG Football Academy',
+        text: `New registration received for ${formData.firstName} ${formData.lastName}.
 
 Registration Details:
 - Name: ${formData.firstName} ${formData.lastName}
 - Age: ${formData.age}
 - Payment Status: ${paymentStatus}
-- Payment Method: ${formData.paymentMethod}
-- Amount Paid: ${formData.amountPaid}
+- Payment Method: ${formData.paymentMethod || 'N/A'}
+- Amount Paid: ${formData.amountPaid || '0'}
 
 Please find the complete details in the attached CSV file.`,
-          attachments: [
-            {
-              filename: 'registration.csv',
-              content: Buffer.from(csvData).toString('base64'),
-              type: 'text/csv'
-            }
-          ]
-        };
+        attachments: [
+          {
+            filename: 'registration.csv',
+            content: Buffer.from(csvData).toString('base64'),
+            type: 'text/csv'
+          }
+        ]
+      };
 
-        const adminEmailResult = await resend.emails.send(adminEmailData);
-        console.log('Admin notification sent successfully:', adminEmailResult);
-      }
+      const adminEmailResult = await resend.emails.send(adminEmailData);
+      console.log('Admin notification sent successfully:', adminEmailResult);
     } catch (adminEmailError) {
       console.error('Failed to send admin notification:', adminEmailError);
+      // Log the full error for debugging
+      console.error('Admin email error details:', JSON.stringify(adminEmailError, null, 2));
       return NextResponse.json(
         {
           success: false,
