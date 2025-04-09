@@ -6,7 +6,7 @@ import "./styles/scrollbar.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "OTG Football Academy - Easter Camp 2025",
+  title: "OTG Football Academy - Easter Holiday Camp 2025",
   description: "Transform your game with our intensive two-week Easter training program. Professional coaching, circuit training, swimming sessions, and strength conditioning for ages 6-18. Limited spots available.",
   icons: {
     icon: "/favicon.png"
