@@ -3,7 +3,7 @@
 import { type ImageProps, default as Image } from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { MoveRight, Calendar, MapPin, Medal, Star, Clock, Users, Shield } from 'lucide-react'
+import { MoveRight, Calendar, MapPin, Medal, Star, Clock, Users, Shield, FileDown } from 'lucide-react'
 import { HeroButtons } from './components/HeroButtons'
 import MasterFundamentals from './components/MasterFundamentals'
 import ProgramDetailsSection from './components/ProgramDetails'
@@ -205,7 +205,15 @@ export default function Home() {
               >
                 Register Now <MoveRight className="w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 border-pakistan_green-800 text-pakistan_green-800 hover:bg-pakistan_green-50">
+              <Button size="lg" variant="outline" 
+                className="gap-2 border-pakistan_green-800 text-pakistan_green-800 hover:bg-pakistan_green-50"
+                onClick={() => {
+                  const fileId = '1TgdVfZ3vcXck5zgGiICVxlGz4G_B-ZaR';
+                  const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                  window.open(downloadUrl, '_blank');
+                }}
+              >
+                <FileDown className="w-5 h-5" />
                 Download Brochure
               </Button>
             </div>
