@@ -10,20 +10,26 @@ const SMTP_FROM = process.env.SMTP_FROM;
 const SMTP_TO = process.env.SMTP_TO;
 const DOMAIN = 'camp.offthegame.com';
 
-if (!RESEND_API_KEY || !SMTP_FROM || !SMTP_TO) {
-  console.error('Missing required environment variables:', {
-    hasResendKey: !!RESEND_API_KEY,
-    hasSmtpFrom: !!SMTP_FROM,
-    hasSmtpTo: !!SMTP_TO
-  });
-  throw new Error('Missing required environment variables');
-}
+// Move environment checks to runtime
+const checkEnvVariables = () => {
+  if (!RESEND_API_KEY || !SMTP_FROM || !SMTP_TO) {
+    console.error('Missing required environment variables:', {
+      hasResendKey: !!RESEND_API_KEY,
+      hasSmtpFrom: !!SMTP_FROM,
+      hasSmtpTo: !!SMTP_TO
+    });
+    throw new Error('Missing required environment variables');
+  }
+  return new Resend(RESEND_API_KEY);
+};
 
-// Initialize Resend client
-const resend = new Resend(RESEND_API_KEY);
+// Initialize Resend client at runtime
+let resend: Resend;
 
 export async function POST(req: Request) {
   try {
+    resend = checkEnvVariables();
+
     const formData = await req.json();
     console.log('Received form data:', formData);
 
