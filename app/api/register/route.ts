@@ -28,22 +28,29 @@ let resend: Resend;
 
 export async function POST(req: Request) {
   try {
-    console.log('Starting registration process...');
+    console.log('[DEBUG] Starting registration process...');
+    console.log('[DEBUG] Environment check:', {
+      hasResendKey: !!process.env.RESEND_API_KEY,
+      hasSmtpFrom: !!process.env.SMTP_FROM,
+      hasSmtpTo: !!process.env.SMTP_TO,
+      smtpFromDomain: process.env.SMTP_FROM?.split('@')[1],
+      nodeEnv: process.env.NODE_ENV
+    });
     
     resend = checkEnvVariables();
-    console.log('Environment variables checked and Resend client initialized');
+    console.log('[DEBUG] Resend client initialized');
 
     // After checkEnvVariables, we know these are defined
     const fromEmail = SMTP_FROM!;
     const toEmail = SMTP_TO!;
     
-    console.log('Email configuration:', { 
+    console.log('[DEBUG] Email configuration:', { 
       fromEmail: fromEmail.replace(/@.*$/, '@...'), // Log partial email for security
       toEmailCount: toEmail.split(',').length
     });
 
     const formData = await req.json();
-    console.log('Received form data:', {
+    console.log('[DEBUG] Received form data:', {
       ...formData,
       // Mask sensitive information in logs
       email: formData.email ? '***@***' : undefined,
