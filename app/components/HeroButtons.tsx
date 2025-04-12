@@ -20,7 +20,7 @@ export function HeroButtons() {
   };
 
   const handleRegister = () => {
-    router.push('/register');
+    router.push('/sign-up');
   };
 
   return (

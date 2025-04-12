@@ -4,23 +4,23 @@ const Facilities = () => {
   const facilities = [
     {
       title: 'Main Training Ground',
-      description: 'football training ground',
-      image: '/images/facilities/IMG_7011.jpg',
+      description: 'FIFA standard artificial turf with multiple training areas',
+      image: '/images/facilities/football-pitch.jpg',
     },
     {
-      title: 'Indoor Training Center',
-      description: 'State-of-the-art indoor facility for year-round training',
-      image: '/images/football.jpg',
+      title: 'Rest Space',
+      description: 'Comfortable indoor facility for relaxation and recovery',
+      image: '/images/facilities/indoors.jpg',
     },
     {
       title: 'Modern Gym Facility',
       description: 'Modern gym equipment for strength and conditioning',
-      image: '/images/gym.jpg',
+      image: '/images/facilities/gym.jpg',
     },
     {
       title: 'Swimming Pool',
       description: '5m x 10m pool for swimming instruction and water safety',
-      image: '/images/swimming.jpg',
+      image: '/images/facilities/pool.jpg',
     },
   ];
 
@@ -72,7 +72,7 @@ const Facilities = () => {
           </div>
           <div className="bg-green-700 rounded-xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
             <h3 className="text-2xl font-semibold text-white mb-4">Additional Amenities</h3>
-            <p className="text-gray-200">Modern changing rooms, medical facilities, and a dedicated video analysis suite for comprehensive player development.</p>
+            <p className="text-gray-200">Modern changing rooms and video analysis suite for comprehensive player development.</p>
           </div>
         </div>
 
