@@ -60,7 +60,7 @@ export default function RegistrationSuccess() {
                 "relative overflow-hidden group"
               )}
               onClick={() => {
-                const fileId = '1TgdVfZ3vcXck5zgGiICVxlGz4G_B-ZaR';
+                const fileId = '1Ny0JunwOUCN3bDorIRbkP8YtelTTR20L';
                 const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
                 window.open(downloadUrl, '_blank');
               }}

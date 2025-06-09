@@ -27,7 +27,7 @@ export default function SuccessPage() {
               Registration Successful!
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Thank you for registering for our Easter Football Camp. We will contact you shortly with further details.
+              Thank you for registering for our Summer Football Camp. We will contact you shortly with further details.
             </p>
           </div>
           
@@ -44,15 +44,17 @@ export default function SuccessPage() {
             </Button>
             
             <Button
-              asChild
               size="lg"
               variant="outline"
               className="gap-2 border-pakistan_green-600 text-pakistan_green-600 hover:bg-pakistan_green-50"
+              onClick={() => {
+                const fileId = '1Ny0JunwOUCN3bDorIRbkP8YtelTTR20L';
+                const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                window.open(downloadUrl, '_blank');
+              }}
             >
-              <Link href="/brochure.pdf" target="_blank" rel="noopener noreferrer">
-                <FileDown className="w-5 h-5" />
-                Download Brochure
-              </Link>
+              <FileDown className="w-5 h-5" />
+              Download Brochure
             </Button>
           </div>
         </div>

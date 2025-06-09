@@ -62,15 +62,15 @@ export default function Home() {
             <div className="flex gap-6 flex-col text-nyanza-50 max-w-3xl">
               <div>
                 <Badge variant="outline" className="bg-light_green-500 text-pakistan_green-900 border-0">
-                  Easter Holiday Camp 2025 • Ages 6-18
+                  Summer Camp 2025 • Ages 6-18 • Aug 4-15
                 </Badge>
               </div>
               <div className="flex gap-6 flex-col">
                 <h1 className="text-5xl md:text-7xl tracking-tight font-bold">
-                  Transform Your Game This Easter Holiday
+                  Transform Your Game This Summer
                 </h1>
                 <p className="text-xl leading-relaxed tracking-tight text-nyanza-200">
-                  Experience our intensive two-week training program featuring professional coaching, circuit training, swimming sessions, and strength conditioning. Limited spots available to ensure personalized attention.
+                  Experience our comprehensive two-week program featuring football development, multi-sport exposure, life skills workshops, and personal growth training. Limited spots available to ensure personalized attention.
                 </p>
               </div>
               <HeroButtons />
@@ -185,7 +185,7 @@ export default function Home() {
               Ready to Transform Your Football Journey?
             </h2>
             <p className="text-xl text-pakistan_green-700 mb-8 max-w-2xl mx-auto">
-              Join us this Easter for an unforgettable football experience. Secure your spot today and take the first step towards becoming a better player.
+              Join us this Summer for an unforgettable football experience. Secure your spot today and take the first step towards becoming a better player.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -198,7 +198,7 @@ export default function Home() {
               <Button size="lg" variant="outline" 
                 className="gap-2 border-pakistan_green-800 text-pakistan_green-800 hover:bg-pakistan_green-50"
                 onClick={() => {
-                  const fileId = '1TgdVfZ3vcXck5zgGiICVxlGz4G_B-ZaR';
+                  const fileId = '1Ny0JunwOUCN3bDorIRbkP8YtelTTR20L';
                   const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
                   window.open(downloadUrl, '_blank');
                 }}
