@@ -64,7 +64,7 @@ export function Hero() {
         {/* Left Column - Text Content */}
         <div className="flex flex-col items-start justify-center space-y-6">
           <Badge variant="outline" className="border-nyanza text-nyanza">
-            Easter Camp 2025
+            Summer Camp 2025
           </Badge>
           <h1 className="text-4xl font-bold tracking-tight text-nyanza sm:text-6xl md:text-7xl">
             Elite Football Training
@@ -169,4 +169,4 @@ export function Hero() {
       </div>
     </section>
   );
-} 
+}

@@ -1,6 +1,6 @@
-# OTG Football Academy Easter Camp Landing Page - UI Description (with Color Palette)
+# OTG Football Academy Summer Camp Landing Page - UI Description (with Color Palette)
 
-**Objective:** Generate registrations for the Easter football camp by providing clear information and a compelling user experience, targeting both young players and their parents.
+**Objective:** Generate registrations for the Summer football camp by providing clear information and a compelling user experience, targeting both young players and their parents.
 
 **Overall Design Principles:** Modern, clean, engaging, trustworthy, mobile-responsive, easy to navigate, visually appealing with a focus on UX/UI. Utilizes the provided green-themed Tailwind color palette.
 

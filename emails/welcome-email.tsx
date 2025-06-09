@@ -22,13 +22,13 @@ export const WelcomeEmail = ({
 }: WelcomeEmailProps) => (
   <Html>
     <Head />
-    <Preview>Welcome to OTG Football Academy Easter Camp!</Preview>
+    <Preview>Welcome to OTG Football Academy Summer Camp!</Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading style={h1}>Welcome to OTG Football Academy!</Heading>
         <Text style={text}>Dear {parentName},</Text>
         <Text style={text}>
-          Thank you for registering {firstName} for our Easter Football Camp! We're excited to have them join us for an amazing football experience.
+          Thank you for registering {firstName} for our Summer Football Camp! We're excited to have them join us for an amazing football experience.
         </Text>
         <Section style={section}>
           <Text style={text}>

@@ -1,20 +1,20 @@
-# Level Up Your Game This Easter! Expert Football Training Awaits.
+# Level Up Your Game This Summer! Expert Football Training Awaits.
 
-**Join the OTG Football Academy's intensive Easter Camp for skill-focused training, physical conditioning, and a fun, competitive environment. Limited Spots Available – Register Now!**
+**Join the OTG Football Academy's comprehensive Summer Camp for football development, multi-sport exposure, life skills workshops, and personal growth training. Limited Spots Available – Register Now!**
 
 ---
 
-## Ignite Your Football Passion This Easter
+## Transform Your Game This Summer
 
-Make the most of the Easter break! The OTG Football Academy Easter Camp is an immersive experience designed to significantly boost the skills and physical abilities of young footballers[cite: 4]. It's a structured, engaging, and secure place to learn new techniques, improve existing ones, and deepen the love for the game[cite: 5]. Train with seasoned coaches and gain a real advantage in your football development[cite: 5].
+Make the most of the summer break! The OTG Football Academy Summer Camp is a comprehensive two-week program designed to develop football skills, introduce multi-sport activities, and foster personal growth in young athletes[cite: 4]. It's a structured, engaging, and secure environment to learn new techniques, build life skills, and deepen the love for sports[cite: 5]. Train with experienced coaches and gain a real advantage in your athletic development[cite: 5].
 
-We know parents look for productive, enriching activities during school holidays[cite: 6]. This camp offers valuable engagement, contributing to your child's growth even during leisure time[cite: 7, 8]. The message "Unleash Your Potential" aims to inspire young players[cite: 9], while the details address parents' focus on skill development and physical training[cite: 10].
+We know parents look for productive, enriching activities during school holidays[cite: 6]. This camp offers valuable engagement through football training, multi-sport exposure, life skills workshops, and personal development, contributing to your child's holistic growth[cite: 7, 8]. The message "Unleash Your Potential" aims to inspire young players[cite: 9], while the details address parents' focus on comprehensive development and character building[cite: 10].
 
 ---
 
 ## Key Objectives: Master the Fundamentals, Elevate Your Performance
 
-Our Easter Camp is meticulously planned for noticeable progress[cite: 12]:
+Our Summer Camp is meticulously planned for comprehensive development[cite: 12]:
 
 * **Sharpen Core Skills:** Intensive drills focusing on passing accuracy, first touch, dribbling, and shooting precision[cite: 13, 14].
 * **Enhance Physical Conditioning:** Tailored exercises to improve speed, agility, balance, strength, and stamina[cite: 14, 15].
@@ -26,7 +26,7 @@ This holistic approach covers technical skills, fitness, tactics, and teamwork, 
 
 ---
 
-## Program Details: What to Expect at the OTG Easter Camp
+## Program Details: What to Expect at the OTG Summer Camp
 
 Expect a stimulating and fulfilling experience[cite: 24]:
 
@@ -70,6 +70,6 @@ Personalized feedback assures parents of tangible skill development and promotes
 
 ## Ready to Elevate Your Game? Secure Your Spot Today!
 
-This Easter is your chance to boost your football skills and make lasting memories at the OTG Football Academy Easter Camp[cite: 60]. Due to intensive training and personalized attention, spots are limited[cite: 61].
+This Summer is your chance to develop comprehensive skills and make lasting memories at the OTG Football Academy Summer Camp[cite: 60]. Due to our holistic approach and personalized attention, spots are limited[cite: 61].
 
 **Register Now to Unleash Your Potential!** [cite: 62]

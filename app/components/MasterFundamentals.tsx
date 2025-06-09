@@ -122,7 +122,7 @@ const MasterFundamentals = () => {
               Master the Fundamentals
             </h2>
             <p className="text-xl text-pakistan_green-700">
-              Our Easter Holiday Camp is meticulously planned for noticeable progress in every aspect of your game
+              Our Summer Camp is meticulously planned for comprehensive development in football skills, multi-sport athleticism, and personal growth
             </p>
             <div className="relative w-full aspect-[4/3] md:aspect-[16/9]">
               <img
@@ -149,4 +149,4 @@ const MasterFundamentals = () => {
   );
 };
 
-export default MasterFundamentals; 
+export default MasterFundamentals;

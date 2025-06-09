@@ -59,7 +59,7 @@ export function MultiStepForm() {
           OTG Football Academy Registration
         </h2>
         <p className="text-green-700 dark:text-green-300 text-sm max-w-sm">
-          Please fill out the registration form below to secure your spot in the Easter Camp.
+          Please fill out the registration form below to secure your spot in the Summer Camp.
         </p>
       </div>
 

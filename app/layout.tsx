@@ -8,8 +8,8 @@ import { FlickeringGrid } from '@/components/ui/flickering-grid';
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "OTG Football Academy - Easter Holiday Camp 2025",
-  description: "Transform your game with our intensive two-week Easter holiday training program. Professional coaching, circuit training, swimming sessions, and strength conditioning for ages 6-18. Limited spots available.",
+  title: "OTG Football Academy - Summer Camp 2025",
+  description: "Transform your game with our comprehensive two-week Summer camp program. Football development, multi-sport exposure, life skills workshops, and personal growth training for ages 6-18. Limited spots available.",
   icons: {
     icon: "/favicon.png"
   }

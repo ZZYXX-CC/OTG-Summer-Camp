@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       from: 'OTG Football Academy <noreply@offthegame.com>',
       to: ADMIN_EMAIL,
       subject: `New Registration: ${data.firstName} ${data.lastName}`,
-      text: `New registration received for the Easter Football Camp.\n\n${csvData}`,
+      text: `New registration received for the Summer Football Camp.\n\n${csvData}`,
       attachments: [{
         filename: 'registration.csv',
         content: Buffer.from(csvData).toString('base64')
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       await resend.emails.send({
         from: 'OTG Football Academy <noreply@offthegame.com>',
         to: data.email,
-        subject: 'Welcome to OTG Football Academy Easter Camp!',
+        subject: 'Welcome to OTG Football Academy Summer Camp!',
         react: WelcomeEmail({
           firstName: data.firstName,
           parentName: data.parentName,
