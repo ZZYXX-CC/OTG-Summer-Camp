@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { type ImageProps, default as Image } from 'next/image'
 import { Button } from '@/components/ui/button'
