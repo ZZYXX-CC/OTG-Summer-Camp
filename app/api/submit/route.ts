@@ -2,12 +2,21 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import WelcomeEmail from '@/emails/welcome-email';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 'dummy-key-for-build');
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@offthegame.com';
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
+    
+    // Check if Resend API key is available
+    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'dummy-key-for-build') {
+      console.log('Resend API key not configured, skipping email sending');
+      return NextResponse.json({
+        success: true,
+        message: 'Registration received (email service not configured)',
+      });
+    }
     
     // Convert form data to CSV
     const csvData = [
