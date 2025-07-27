@@ -22,7 +22,6 @@
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "csv-stringify": "^6.5.2",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.6.5",
     "lucide-react": "^0.487.0",
@@ -32,6 +31,8 @@
     "react-dom": "^18.2.0",
     "resend": "^4.2.0",
     "sonner": "^2.0.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
