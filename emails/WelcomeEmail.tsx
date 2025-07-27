@@ -16,12 +16,14 @@ interface WelcomeEmailProps {
   playerName: string;
   campDates: string;
   paymentStatus: string;
+  registrationId?: string;
 }
 
 export const WelcomeEmail = ({
   playerName = "there",
   campDates = "upcoming session",
-  paymentStatus = "pending"
+  paymentStatus = "pending",
+  registrationId
 }: WelcomeEmailProps) => {
   return (
     <Html>
@@ -42,6 +44,11 @@ export const WelcomeEmail = ({
             <Text style={text}>
               Thank you for registering for our {campDates} football camp! We're excited to have you join us.
             </Text>
+            {registrationId && (
+              <Text style={text}>
+                Your registration ID is: <strong>{registrationId}</strong>
+              </Text>
+            )}
             <Text style={text}>
               Your registration status is: <strong>{paymentStatus}</strong>
             </Text>

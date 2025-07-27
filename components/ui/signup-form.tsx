@@ -201,6 +201,13 @@ export function SignupForm() {
             <Label htmlFor="medications">Medications<span className="text-red-500">*</span></Label>
             <Input id="medications" name="medications" placeholder="Type N/A if not applicable" type="text" required />
           </LabelInputContainer>
+
+          <LabelInputContainer 
+            tooltip="Please list any dietary restrictions or food allergies. Type 'N/A' if not applicable."
+          >
+            <Label htmlFor="dietaryRestrictions">Dietary Restrictions<span className="text-red-500">*</span></Label>
+            <Input id="dietaryRestrictions" name="dietaryRestrictions" placeholder="Type N/A if not applicable" type="text" required />
+          </LabelInputContainer>
         </div>
 
         {/* Football Experience */}
