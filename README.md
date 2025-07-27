@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Environment Variables
+
+The registration API uses [Resend](https://resend.com/) for sending confirmation emails. Set the following variables in your deployment environment (e.g. Vercel or Netlify):
+
+- `RESEND_API_KEY` – your Resend API key
+- `SMTP_FROM` – the address that appears in the From field (e.g. `noreply@yourdomain.com`)
+- `SMTP_TO` – comma‑separated admin email addresses that should receive registration notifications
+
+If these variables are not defined, submissions will still be saved to the local SQLite database but no emails will be sent.
+
